@@ -1,19 +1,19 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 float price(float amount, float price_per_kg);
-int main()
+int main(int argc, char **argv)
 {
-    int count;
-    scanf("%d", &count);
+    int count = atoi(argv[1]);
     
     float amounts[count-1],prices[count-1],sum;
     for(int i = 0;i< count;i++)
     {
-        scanf("%f",&prices[i]);
+        prices[i] = atof(argv[i+2]);
     }
     for(int i = 0;i<count;i++)
     {
-        scanf("%f",&amounts[i]);
+        amounts[i] = atof(argv[i+count+2]);
     }
     for(int i = 0;i<count;i++)
     {
