@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 int find_t(int number,int k);
 int stepen(int x, int y);
 int main(int argc, char **argv)
@@ -36,8 +37,8 @@ int find_t(int number,int k)
        sum += stepen(digit_array[i],k);
        k++;
     }
-    int t = sum/number;
-    if(t>0)
+    float t = (float)sum/number;
+    if(t- (int)t == 0)       // Ako T sushtestvuva priemam: "dali T e cqlo chislo" !
         return t;
     return -1;
 }
