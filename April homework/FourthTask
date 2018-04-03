@@ -1,0 +1,24 @@
+#include <stdio.h>
+struct wood_t{
+    float width;
+    float height;
+    float depth;
+    float price;
+};
+int can_fit(struct wood_t in_store, struct wood_t wanted);
+int main()
+{
+    struct wood_t wanted_table = {2,2,2,1};
+    struct wood_t table = {4,2,3,1};
+    int result = can_fit(table,wanted_table);
+
+    return 0;
+}
+int can_fit(struct wood_t in_store, struct wood_t wanted)
+{
+    if(in_store.width>=wanted.width)
+        if(in_store.height>=wanted.height)
+            if(in_store.depth>=wanted.depth)
+                    return 1;
+    return -1;
+}   
