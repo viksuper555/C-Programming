@@ -4,15 +4,34 @@
 void transpone(char* chord, int with);
 int main()
 {
-    char string[2] = "F";
-    char* charptr = string;
-    transpone(charptr, 5);
-    puts(charptr);
+    char string[50];
+    fgets(string, 50, stdin);
+    int num = string[strlen(string)-2] - '0'; // On different compilers num is 
+											 //	 either (-1) or (-2)
+	if(string[strlen(string)-3] == '-')
+		num *= -1;
+    for(int i = 0;i<strlen(string);i++)
+        {
+            char result[2] = "";
+            if(string[i] <= 'G' && string[i] >= 'A' && string[i] != 'm')
+            {
+                    result[0] = string[i];
+                if(string[i+1] == 'm')
+                    result[1] = 'm';
+                char* charptr = result;
+                transpone(charptr, num);
+                puts(charptr);
+            }
+            memset(result,'\0',2);
+                
+        }
+
     return 0;
 }
 void transpone(char* chord, int with)
 {
     int num;
+    chord[2] = '\0';
     if(strcmp(chord,"C") == 0)
         num = 0;
     if(strcmp(chord,"Cm") == 0)
@@ -38,9 +57,9 @@ void transpone(char* chord, int with)
     if(strcmp(chord,"B") == 0)
         num = 11;
     num+= with;
-    if(num>= 12)
+    if(num > 11)
         num -= 12;
-	else if(num< 0)
+	else if(num < 0)
 		num += 12;
     if(num == 0)
         strcpy(chord, "C");
